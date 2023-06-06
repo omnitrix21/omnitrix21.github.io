@@ -1,0 +1,17 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+body {
+	background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
+}
+
+h1 {
+	background-color: #000a;
+	color: white;
+	margin: 0;
+	text-align:center;
+}
