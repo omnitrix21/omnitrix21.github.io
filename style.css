@@ -2,16 +2,41 @@ html,
 body {
 	margin: 0;
 	padding: 0;
-	height: 100%;
+	height: 100vh;
 }
 
-body {
+
+header {
+	height: 100%;
 	background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
 }
 
 h1 {
-	background-color: #000a;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
 	color: white;
 	margin: 0;
-	text-align:center;
+	text-align: center;
+	animation: fizz 2s infinite;
+}
+
+@keyframes fizz{
+	50%{
+		color:yellow;
+	}
+	
+}
+
+section {
+	height: calc(50vh - 1rem)
+
+}
+
+footer {
+	height: 2rem;
+	text-align: center;
+	font-weight: bold;
+	font-family: monospace;
 }
