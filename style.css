@@ -22,6 +22,7 @@
     text-align: center;
     color: #bd86ff;
     font-size: xx-large;
+    height: 25vh;
 }
 
 #bg {
@@ -29,4 +30,13 @@
     color: white;
     font-size: x-large;
     margin: 20px;
+    line-height: normal;
+    max-width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#aarav {
+    color:rgb(223, 41, 17);
+    text-decoration: none;
 }
