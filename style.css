@@ -1,0 +1,32 @@
+* {
+    background-color: black;
+    font-family: 'Space Mono', monospace;
+}
+
+#h1 {
+    margin: 8px;
+    margin-right: 1020px;
+    text-align: left;
+    text-decoration: none; 
+    font-size:xx-large;
+    color: white;
+}
+#h2 {
+    text-align: right;
+    text-decoration: none; 
+    font-size:xx-large;
+    color: white;
+}
+
+#main {
+    text-align: center;
+    color: #bd86ff;
+    font-size: xx-large;
+}
+
+#bg {
+    text-align: left;
+    color: white;
+    font-size: x-large;
+    margin: 20px;
+}
