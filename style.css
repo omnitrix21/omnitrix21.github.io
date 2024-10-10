@@ -1,0 +1,193 @@
+:root {
+    --bg-color: #071013;
+    --text-color: #F3F7F0;
+    --highlight-color: #E7ECEF;
+    --dim-color: #BEFFC7;
+    --padding-small: 1rem;
+    --padding-medium: 1.5rem;
+    --padding-large: 2rem;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Fira Code', monospace;
+    line-height: 1.6;
+    height: 100%;
+    font-size: 16px;
+}
+
+.terminal {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--padding-small);
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.terminal::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 25px;
+    background: var(--dim-color);
+    border-bottom: 2px solid var(--text-color);
+    z-index: 1000;
+}
+
+header {
+    margin-top: calc(25px + var(--padding-medium));
+    margin-bottom: var(--padding-medium);
+    border: 1px solid var(--text-color);
+    padding: var(--padding-medium);
+    position: relative;
+}
+
+header::before {
+    content: "$ cat header.txt";
+    position: absolute;
+    top: -0.8em;
+    left: 1em;
+    background: var(--bg-color);
+    padding: 0 0.5em;
+    color: var(--highlight-color);
+}
+
+h1 {
+    color: var(--text-color);
+    text-align: center;
+    font-size: 1.8em;
+    word-wrap: break-word;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--padding-medium);
+}
+
+nav a {
+    margin: 0.5em;
+    color: var(--highlight-color);
+    text-decoration: none;
+    position: relative;
+}
+
+nav a::before {
+    content: "> ";
+    color: var(--text-color);
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    flex-grow: 1;
+}
+
+.post {
+    margin-bottom: var(--padding-large);
+    border: 1px solid var(--dim-color);
+    padding: var(--padding-medium);
+    position: relative;
+}
+
+.post::before {
+    content: "$ cat post_" attr(data-post-id) ".md";
+    position: absolute;
+    top: -0.8em;
+    left: 1em;
+    background: var(--bg-color);
+    padding: 0 0.5em;
+    color: var(--highlight-color);
+}
+
+h2 {
+    color: var(--text-color);
+    margin-top: 0;
+    font-size: 1.5em;
+    word-wrap: break-word;
+}
+
+.post-meta {
+    font-size: 0.9em;
+    color: var(--dim-color);
+    margin-bottom: var(--padding-small);
+}
+
+.post p {
+    margin-bottom: var(--padding-small);
+}
+
+a {
+    color: var(--highlight-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    margin-top: auto;
+    text-align: center;
+    color: var(--dim-color);
+    border-top: 1px solid var(--dim-color);
+    padding: var(--padding-medium) 0;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.cursor::after {
+    content: "█";
+    animation: blink 1s infinite;
+    color: var(--text-color);
+}
+
+@media screen and (max-width: 768px) {
+    :root {
+        --padding-small: 0.8rem;
+        --padding-medium: 1.2rem;
+        --padding-large: 1.5rem;
+    }
+
+    body {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    h2 {
+        font-size: 1.3em;
+    }
+
+    .terminal {
+        padding: var(--padding-small);
+    }
+
+    header, .post {
+        padding: var(--padding-small);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .terminal {
+        padding: var(--padding-large);
+    }
+}
