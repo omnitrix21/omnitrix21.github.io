@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How to Install Linux on a Windows PC: A Beginner's Guide</title>
-        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
+    <title>Aarav's Blog - {TITLE}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
         :root {
             --bg-color: #071013;
             --text-color: #F3F7F0;
             --highlight-color: #E7ECEF;
             --dim-color: #BEFFC7;
+            --link-color: #CA7DF9; /* Default link color */
             --padding-small: 1rem;
             --padding-medium: 1.5rem;
             --padding-large: 2rem;
@@ -88,9 +89,10 @@
 
         nav a {
             margin: 0.5em;
-            color: var(--highlight-color);
+            color: var(--link-color); /* Default link color */
             text-decoration: none;
             position: relative;
+            transition: color 0.3s, transform 0.3s; /* Smooth color and transform transition */
         }
 
         nav a::before {
@@ -99,7 +101,9 @@
         }
 
         nav a:hover {
-            text-decoration: underline;
+            color: var(--text-color); /* Change text color on hover */
+            text-decoration: underline; /* Underline on hover */
+            transform: scale(1.1); /* Slightly enlarge the link on hover */
         }
 
         main {
@@ -148,10 +152,34 @@
             padding: var(--padding-medium) 0;
         }
 
+        /* Add terminal-like hover effect for links inside post content */
+        main a {
+            color: var(--link-color); /* Link color */
+            text-decoration: none; /* No underline by default */
+            transition: color 0.3s, transform 0.3s; /* Smooth color and transform transition */
+        }
+
+        main a:hover {
+            color: var(--text-color); /* Change color on hover */
+            text-decoration: underline; /* Underline on hover */
+            transform: scale(1.1); /* Slightly enlarge the link on hover */
+            position: relative; /* Position relative for pseudo-elements */
+        }
+
+        main a::before {
+            content: "> "; /* Add prefix to links */
+            color: var(--text-color);
+            transition: color 0.3s; /* Smooth transition for prefix color */
+        }
+
+        main a:hover::before {
+            color: var(--text-color); /* Change prefix color on hover */
+        }
+
         ::selection {
-    background: var(--highlight-color); /* Background color when text is selected */
-    color: var(--bg-color); /* Text color when selected */
-}
+            background: var(--highlight-color); /* Background color when text is selected */
+            color: var(--bg-color); /* Text color when selected */
+        }
 
         @keyframes blink {
             0%, 100% { opacity: 1; }
@@ -200,78 +228,14 @@
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="#contact">Contact</a>
-                <a href="archieve.html">Archive</a>
+                <a href="archive.html">Archive</a>
             </nav>
         </header>
 
         <main>
-            <h2>How to Install Linux on a Windows PC: A Beginner's Guide</h2>
-            <div class="post-meta">Posted on: 2024-10-10 | Author: AARAV</div>
-            <div id="content">
-                <p>If you're curious about Linux and want to try it out alongside your existing Windows installation, you're in the right place! This guide will walk you through the process of installing Linux on your Windows PC step by step.</p>
-
-                <h3>Step 1: Choose Your Linux Distribution</h3>
-                <p>There are many Linux distributions available. For beginners, we recommend:</p>
-                <ul>
-                    <li><a href="https://ubuntu.com/" target="_blank" style="color: var(--highlight-color);">Ubuntu</a> - A user-friendly distribution with a large community.</li>
-                    <li><a href="https://linuxmint.com/" target="_blank" style="color: var(--highlight-color);">Linux Mint</a> - Known for its simplicity and ease of use.</li>
-                    <li><a href="https://www.debian.org/" target="_blank" style="color: var(--highlight-color);">Debian</a> - A stable and versatile choice for users.</li>
-                    <li><a href="https://www.fedoraproject.org/" target="_blank" style="color: var(--highlight-color);">Fedora</a> - Focuses on innovation and includes the latest software.</li>
-                    <li><a href="https://www.opensuse.org/" target="_blank" style="color: var(--highlight-color);">openSUSE</a> - Offers both a stable and rolling release version.</li>
-                </ul>
-
-                <h3>Step 2: Create a Bootable USB Drive</h3>
-                <p>You’ll use a tool like Rufus to create a bootable USB drive.</p>
-                <ol>
-                    <li><strong>Download Rufus</strong> from <a href="https://rufus.ie/" target="_blank"  >here</a>.</li>
-                    <li>Insert your USB drive.</li>
-                    <li>Open Rufus and select the USB device.</li>
-                    <li>Select the Linux ISO you downloaded and hit "Start."</li>
-                </ol>
-
-                <h3>Step 3: Prepare Your Windows PC</h3>
-                <p>You need to make space on your hard drive for Linux:</p>
-                <ol>
-                    <li>Open <code>Disk Management</code> by pressing <code>Windows + X</code> and choosing "Disk Management."</li>
-                    <li>Shrink your Windows partition to free up at least 20 GB for Linux.</li>
-                </ol>
-
-                <h3>Step 4: Boot from the USB Drive</h3>
-                <p>Now, let's boot into the USB drive:</p>
-                <h4>1. Restart Your Computer</h4>
-                <p>Save your work and restart your PC.</p>
-
-                <h4>2. Access the Boot Menu</h4>
-                <p>Press the appropriate key for your PC to access the boot menu (e.g., F12, F2, DEL, etc.).</p>
-
-                <h4>3. Select the USB Drive</h4>
-                <p>Once the USB boots, choose either "Try Linux" or "Install Linux."</p>
-
-                <h3>Step 5: Install Linux</h3>
-                <ol>
-                    <li>Choose "Install" when prompted.</li>
-                    <li>Select "Install Linux alongside Windows" for dual boot.</li>
-                    <li>Use the unallocated space for the installation.</li>
-                    <li>Follow the steps to configure time zone, keyboard layout, and user details.</li>
-                </ol>
-
-                <h3>Step 6: Complete the Installation</h3>
-                <ol>
-                    <li>Once installation is finished, reboot your computer.</li>
-                    <li>Remove the USB drive when prompted.</li>
-                </ol>
-
-                <h3>Step 7: Boot into Linux</h3>
-                <p>After rebooting, select Linux from the GRUB boot menu to start using it!</p>
-
-                <h3>Step 8: Update Your Linux System</h3>
-                <p>Open the terminal and update your system:</p>
-                <pre><code>sudo apt update
-sudo apt upgrade</code></pre>
-
-                <h3>Conclusion</h3>
-                <p>You’ve successfully installed Linux! Enjoy exploring the world of open-source software. Happy exploring!</p>
-            </div>
+            <h2 id="post-title"></h2>
+            <div id="post-meta" class="post-meta"></div>
+            <div id="post-content"></div>
         </main>
 
         <footer>
@@ -279,6 +243,7 @@ sudo apt upgrade</code></pre>
         </footer>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
             // Typing effect for the main title
@@ -296,6 +261,29 @@ sudo apt upgrade</code></pre>
                 }
             }
             typeWriter();
+
+            // Load and display the blog post
+            async function displayPost() {
+                const postId = new URLSearchParams(window.location.search).get('id');
+                const response = await fetch(`post_${postId}.md`);
+                const markdown = await response.text();
+                const converter = new showdown.Converter();
+                const html = converter.makeHtml(markdown);
+                
+                const titleMatch = markdown.match(/^# (.*$)/m);
+                const title = titleMatch ? titleMatch[1] : 'Untitled Post';
+                document.getElementById('post-title').textContent = title;
+                document.title = `Aarav's Blog - ${title}`;
+
+                const metaMatch = markdown.match(/Posted on: (.*?) \| Author: (.*?)$/m);
+                if (metaMatch) {
+                    document.getElementById('post-meta').textContent = `Posted on: ${metaMatch[1]} | Author: ${metaMatch[2]}`;
+                }
+
+                document.getElementById('post-content').innerHTML = html;
+            }
+
+            displayPost();
         });
     </script>
 </body>
