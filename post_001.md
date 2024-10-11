@@ -1,3 +1,4 @@
+# Linux installation for beginners
 
 Are you ready to explore the world of Linux? Linux is a powerful, open-source operating system, and installing it on your Windows PC can be an exciting step toward more control over your system. Let’s walk through the steps to get Linux up and running on your computer, even if you’re a beginner!
 
