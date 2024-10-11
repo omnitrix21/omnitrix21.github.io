@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aarav's Blog - Archive</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #000000;
+            --text-color: #e6f1ff;
+            --highlight-color: #64ffda;
+            --dim-color: #8892b0;
+            --padding-small: 1rem;
+            --padding-medium: 1.5rem;
+            --padding-large: 2rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1.6;
+            min-height: 100vh;
+            font-size: 16px;
+        }
+
+        .terminal {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--padding-medium);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header, .archive {
+            margin-top: var(--padding-large);
+            margin-bottom: var(--padding-large);
+            border: 2px solid var(--highlight-color);
+            padding: var(--padding-medium);
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+        }
+
+        header::before, .archive::before {
+            content: attr(data-before);
+            position: absolute;
+            top: -0.8em;
+            left: 1em;
+            background: var(--bg-color);
+            padding: 0 0.5em;
+            color: var(--highlight-color);
+        }
+
+        h1, h2 {
+            color: var(--highlight-color);
+            text-align: center;
+            word-wrap: break-word;
+        }
+
+        h1 { font-size: clamp(1.5em, 5vw, 2.5em); margin-bottom: var(--padding-medium); }
+        h2 { font-size: clamp(1.2em, 4vw, 1.8em); margin-bottom: var(--padding-medium); }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: var(--padding-medium);
+        }
+
+        nav a {
+            margin: 0.5em;
+            color: var(--text-color);
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::before {
+            content: "> ";
+            color: var(--highlight-color);
+        }
+
+        nav a:hover {
+            color: var(--highlight-color);
+        }
+
+        .archive-list {
+            list-style-type: none;
+        }
+
+        .archive-list li {
+            margin-bottom: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .archive-list .date {
+            color: var(--dim-color);
+            font-size: 0.9em;
+            min-width: 100px;
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        .archive-list a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            flex-grow: 1;
+            margin-right: 15px;
+        }
+
+        .archive-list a:hover {
+            color: var(--highlight-color);
+        }
+
+        footer {
+            margin-top: auto;
+            text-align: center;
+            color: var(--dim-color);
+            border-top: 1px solid var(--dim-color);
+            padding: var(--padding-medium) 0;
+        }
+
+        ::selection {
+            background-color: var(--highlight-color);
+            color: var(--bg-color);
+        }
+
+        @media screen and (max-width: 600px) {
+            .terminal {
+                padding: var(--padding-small);
+            }
+
+            header, .archive {
+                padding: var(--padding-small);
+            }
+
+            .archive-list li {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .archive-list .date {
+                text-align: left;
+                margin-top: 5px;
+            }
+
+            .archive-list a {
+                margin-right: 0;
+            }
+        }
+
+        @media screen and (min-width: 601px) and (max-width: 900px) {
+            .terminal {
+                padding: var(--padding-medium);
+            }
+
+            header, .archive {
+                padding: var(--padding-medium);
+            }
+        }
+
+        @media screen and (min-width: 901px) {
+            .terminal {
+                padding: var(--padding-large);
+            }
+
+            header, .archive {
+                padding: var(--padding-large);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <header data-before="$ cat header.txt">
+            <h1>Aarav's Blog</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="archive.html">Archive</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+        <main>
+            <section class="archive" data-before="$ ls -l archive/">
+                <h2>Archive</h2>
+                <ul class="archive-list">
+                    <li>
+                        <a href="post001.html">How to Install Linux on a Windows PC: A Beginner's Guide</a>
+                        <span class="date">2024-10-05</span>
+                    </li>
+                    <li>
+                        <a href="#">The Future of Open Source: Trends and Predictions</a>
+                        <span class="date">2024-09-20</span>
+                </ul>
+            </section>
+        </main>
+        <footer>
+            <p>&copy; 2024 Aarav. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
