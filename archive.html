@@ -197,14 +197,8 @@
         <main>
             <section class="archive" data-before="$ ls -l archive/">
                 <h2>Archive</h2>
-                <ul class="archive-list">
-                    <li>
-                        <a href="#post_001.html">How to Install Linux on a Windows PC: A Beginner's Guide</a>
-                        <span class="date">2024-10-05</span>
-                    </li>
-                    <li>
-                        <a href="#">The Future of Open Source: Trends and Predictions</a>
-                        <span class="date">2024-09-20</span>
+                <ul id="archive-list" class="archive-list">
+                    <!-- Posts will be dynamically added here -->
                 </ul>
             </section>
         </main>
@@ -212,5 +206,34 @@
             <p>&copy; 2024 Aarav. All rights reserved.</p>
         </footer>
     </div>
+
+    <script>
+        // Array to store all blog posts metadata
+        const blogPostsMetadata = [
+            { id: "001", title: "How to Install Linux on a Windows PC: A Beginner's Guide", date: "2024-10-10", file: "post_001.md" },
+            { id: "002", title: "Are Custom ROMs Becoming Irrelevant?", date: "2024-10-11", file: "post_002.md" },
+            // Add more posts here as you create them
+        ];
+
+        // Function to display all posts
+        function displayAllPosts() {
+            const archiveList = document.getElementById('archive-list');
+            
+            // Sort posts by date (newest first)
+            const sortedPosts = blogPostsMetadata.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            sortedPosts.forEach(post => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <a href="post-template.html?id=${post.id}">${post.title}</a>
+                    <span class="date">${post.date}</span>
+                `;
+                archiveList.appendChild(listItem);
+            });
+        }
+
+        // Call the function when the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', displayAllPosts);
+    </script>
 </body>
 </html>

@@ -7,7 +7,38 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Your existing styles for links */
+        a {
+            color: #CA7DF9;
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+        }
 
+        a:hover {
+            color: #E7ECEF;
+            transform: scale(1.1);
+            text-decoration: underline;
+        }
+
+        a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: #E7ECEF;
+            left: 0;
+            bottom: 0;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        a:hover::after {
+            transform: scaleX(1);
+        }
+    </style>
 </head>
 <body>
     <div class="terminal">
@@ -31,9 +62,11 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
     <script>
+        // Centralized blog posts metadata
         const blogPostsMetadata = [
             { id: "001", title: "How to Install Linux on a Windows PC: A Beginner's Guide", date: "2024-10-10", author: "AARAV", file: "post_001.md" },
             { id: "002", title: "Are Custom ROMs Becoming Irrelevant?", date: "2024-10-11", author: "AARAV", file: "post_002.md" },
+            // Add more posts here as you create them
         ];
 
         async function fetchMarkdown(file) {
@@ -58,7 +91,7 @@
                         <h2>${post.title}</h2>
                         <div class="post-meta">Posted on: ${post.date} | Author: ${post.author}</div>
                         ${html}
-                        <a href="post-template.html?id=${post.id}">Read more...</a>
+                        <a class="read-more" href="post-template.html?id=${post.id}">Read more...</a>
                     </article>
                 `;
                 blogPostsContainer.innerHTML += postHTML;
