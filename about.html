@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How to Install Linux on a Windows PC: A Beginner's Guide</title>
-        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
-        <style>
+    <title>About Aarav - Tech Enthusiast and Blogger</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
         :root {
             --bg-color: #071013;
             --text-color: #F3F7F0;
             --highlight-color: #E7ECEF;
             --dim-color: #BEFFC7;
+            --link-color: #CA7DF9;
             --padding-small: 1rem;
             --padding-medium: 1.5rem;
             --padding-large: 2rem;
@@ -25,7 +26,7 @@
         body, html {
             background-color: var(--bg-color);
             color: var(--text-color);
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Fira Code', monospace;
             line-height: 1.6;
             height: 100%;
             font-size: 16px;
@@ -76,8 +77,8 @@
             word-wrap: break-word;
         }
 
-        h1 { font-size: 1.8em; }
-        h2 { font-size: 1.5em; margin-top: var(--padding-medium); }
+        h1 { font-size: 2em; margin-bottom: var(--padding-medium); }
+        h2 { font-size: 1.5em; margin-bottom: var(--padding-medium); }
 
         nav {
             display: flex;
@@ -88,9 +89,10 @@
 
         nav a {
             margin: 0.5em;
-            color: var(--highlight-color);
+            color: var(--link-color);
             text-decoration: none;
             position: relative;
+            transition: color 0.3s, transform 0.3s;
         }
 
         nav a::before {
@@ -99,7 +101,9 @@
         }
 
         nav a:hover {
+            color: var(--text-color);
             text-decoration: underline;
+            transform: scale(1.1);
         }
 
         main {
@@ -107,10 +111,11 @@
             border: 1px solid var(--dim-color);
             padding: var(--padding-medium);
             position: relative;
+            margin: 0 20px;
         }
 
         main::before {
-            content: "$ cat blog_post.md";
+            content: "$ cat about_me.txt";
             position: absolute;
             top: -0.8em;
             left: 1em;
@@ -119,15 +124,11 @@
             color: var(--highlight-color);
         }
 
-        .post-meta {
-            font-size: 0.9em;
-            color: var(--dim-color);
-            margin-bottom: var(--padding-small);
-            text-align: center;
-        }
-
-        p {
-            margin-bottom: var(--padding-small);
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
 
         footer {
@@ -136,6 +137,11 @@
             color: var(--dim-color);
             border-top: 1px solid var(--dim-color);
             padding: var(--padding-medium) 0;
+        }
+
+        ::selection {
+            background: var(--highlight-color);
+            color: var(--bg-color);
         }
 
         @keyframes blink {
@@ -147,30 +153,6 @@
             content: "█";
             animation: blink 1s infinite;
             color: var(--text-color);
-        }
-
-        .hidden {
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .visible {
-            opacity: 1;
-        }
-
-        /* Terminal Style for About Me */
-        pre {
-            background: var(--bg-color);
-            padding: var(--padding-medium);
-            border: 1px solid var(--dim-color);
-            margin: var(--padding-medium) 0;
-            overflow-x: auto;
-        }
-
-        /* Change selected text color to white */
-        ::selection {
-            background-color: var(--highlight-color);
-            color: white;
         }
 
         @media screen and (max-width: 768px) {
@@ -203,24 +185,37 @@
                 <a href="archive.html">Archive</a>
             </nav>
         </header>
-            <pre><code>
-Name: Aarav
-Occupation: Student
+        <main>
+            <div class="about-content">
+Hey, I'm Aarav. Just a regular tech geek from India. Pretty much always had an interest in exploring technology - be it messing around with software, trying out new operating systems, or whatever else to figure out ways to make my devices run smoother.
 
-Interests:
-- Programming
-- Open-source Software
-- Technology
-- Automobiles
+Hence, I just publish the taken stuff on this blog in the easiest way possible - that's to say, I'm not trying to throw anyone off all the complicated stuff, but some tips and guides which really help people get the most out of their computers or tech in general.
 
-My journey into technology started when I was young.I love exploring new tools and resources, especially those that
-empower users to make the most of their devices. In my free time, I enjoy writing about tech and sharing my experiences with others. 
-</code></pre>
+I tend to be buried deep in various technology-related projects, but I still enjoy playing around with gadgets and finding ways to make the digital world better. I'm so much of an open-source software believer that I keep my ears open for any assistance within this community.
+            </div>
         </main>
-
         <footer>
-            <p>&copy; 2024 Aarav. All rights reserved.</p>
+            <p>&copy; 2024 Aarav's Blog | All rights reserved | <span class="cursor"></span></p>
         </footer>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const title = document.querySelector('h1');
+            const text = title.textContent;
+            title.innerHTML = '';
+            let i = 0;
+            function typeWriter() {
+                if (i < text.length) {
+                    title.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                } else {
+                    title.innerHTML += '<span class="cursor"></span>';
+                }
+            }
+            typeWriter();
+        });
+    </script>
 </body>
 </html>
