@@ -29,9 +29,9 @@ Some of the most popular custom ROMs like CyanogenMod (now LineageOS), Paranoid 
 
 Although custom ROMs are becoming less common, they still serve a purpose for certain users. For older devices that no longer receive official updates, custom ROMs can offer extended life. Devices that come with heavy customizations, such as Xiaomi’s MIUI, may still benefit from cleaner AOSP-based ROMs.
 
-Moreover, the enthusiast community continues to thrive, with developers creating ROMs that emphasize privacy, control, and customization beyond what stock ROMs offer.
+Moreover, the enthusiast community continues to survive, with developers creating ROMs that emphasize privacy, control, and customization beyond what stock ROMs offer.
 
-## Conclusion: A Changing Landscape
+## Conclusion: A Changing Scenario 
 
 Custom ROMs may not be as popular or necessary as they once were, but they are far from dead. They still provide value to specific use cases, particularly for privacy advocates, advanced users, and those with older devices. However, the days when custom ROMs were a necessity for a smooth, up-to-date Android experience seem to be behind us.
 
