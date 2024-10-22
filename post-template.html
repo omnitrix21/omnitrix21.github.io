@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aarav's Blog - Loading...</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -11,10 +13,12 @@
             --text-color: #F3F7F0;
             --highlight-color: #E7ECEF;
             --dim-color: #BEFFC7;
-            --link-color: #CA7DF9; 
-            --padding-small: 1rem;
-            --padding-medium: 1.5rem;
-            --padding-large: 2rem;
+            --link-color: #CA7DF9;
+            --padding-small: clamp(0.8rem, 2vw, 1rem);
+            --padding-medium: clamp(1.2rem, 3vw, 1.5rem);
+            --padding-large: clamp(1.5rem, 4vw, 2rem);
+            --font-size-base: clamp(14px, 2vw, 16px);
+            --font-size-h1: clamp(1.5em, 4vw, 2em);
         }
 
         * {
@@ -23,20 +27,23 @@
             padding: 0;
         }
 
-        body, html {
+        body {
             background-color: var(--bg-color);
             color: var(--text-color);
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Fira Code', monospace;
             line-height: 1.6;
-            height: 100%;
-            font-size: 16px;
+            font-size: var(--font-size-base);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .terminal {
             max-width: 1200px;
             margin: 0 auto;
             padding: var(--padding-small);
-            min-height: 100%;
+            width: 100%;
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
@@ -75,7 +82,7 @@
             color: var(--text-color);
             text-align: center;
             word-wrap: break-word;
-            font-size: 2em;
+            font-size: var(--font-size-h1);
         }
 
         nav {
@@ -87,10 +94,10 @@
 
         nav a {
             margin: 0.5em;
-            color: var(--link-color); 
+            color: var(--link-color);
             text-decoration: none;
             position: relative;
-            transition: color 0.3s, transform 0.3s; /
+            transition: color 0.3s, transform 0.3s;
         }
 
         nav a::before {
@@ -98,10 +105,11 @@
             color: var(--text-color);
         }
 
-        nav a:hover {
-            color: var(--text-color); 
-            text-decoration: underline; 
+        nav a:hover, nav a:focus {
+            color: var(--text-color);
+            text-decoration: underline;
             transform: scale(1.1);
+            outline: none;
         }
 
         main {
@@ -109,7 +117,7 @@
             border: 1px solid var(--dim-color);
             padding: var(--padding-medium);
             position: relative;
-            margin: 0 20px; 
+            margin: 0 20px;
         }
 
         main::before {
@@ -129,17 +137,15 @@
             text-align: center;
         }
 
-        p {
+        p, ol, ul {
             margin-bottom: var(--padding-small);
-            max-width: 800px; 
+            max-width: 800px;
             margin-left: auto;
-            margin-right: auto; 
+            margin-right: auto;
         }
 
         ol, ul {
-            margin: var(--padding-small) auto;
             padding-left: 20px;
-            max-width: 800px; 
         }
 
         footer {
@@ -150,32 +156,28 @@
             padding: var(--padding-medium) 0;
         }
 
-        main a {
-            color: var(--link-color); 
-            text-decoration: none; 
-            transition: color 0.3s, transform 0.3s; 
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
         }
 
-        main a:hover {
-            color: var(--text-color); 
-            text-decoration: underline; 
-            transform: scale(1.1); 
-            position: relative; 
-        }
-
-        main a::before {
-            content: "> "; 
+        a:hover, a:focus {
             color: var(--text-color);
-            transition: color 0.3s; 
+            text-decoration: underline;
+            transform: scale(1.1);
+            outline: none;
         }
 
-        main a:hover::before {
+        a::before {
+            content: "> ";
             color: var(--text-color);
+            transition: color 0.3s;
         }
 
         ::selection {
-            background: var(--highlight-color); 
-            color: var(--bg-color); 
+            background: var(--highlight-color);
+            color: var(--bg-color);
         }
 
         @keyframes blink {
@@ -197,24 +199,6 @@
         .visible {
             opacity: 1;
         }
-
-        @media screen and (max-width: 768px) {
-            :root {
-                --padding-small: 0.8rem;
-                --padding-medium: 1.2rem;
-                --padding-large: 1.5rem;
-            }
-
-            body { font-size: 14px; }
-            h1 { font-size: 1.5em; }
-            h2 { font-size: 1.3em; }
-            .terminal { padding: var(--padding-small); }
-            header, main { padding: var(--padding-small); }
-        }
-
-        @media screen and (min-width: 1200px) {
-            .terminal { padding: var(--padding-large); }
-        }
     </style>
 </head>
 <body>
@@ -235,30 +219,30 @@
         </main>
 
         <footer>
-            <p>&copy; 2024 Aarav's Space | All rights reserved | <span class="cursor"></span></p>
+            <p>&copy; <span id="current-year"></span> Aarav's Space | All rights reserved | <span class="cursor"></span></p>
         </footer>
     </div>
 
     <script src="blog-data.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
     <script>
-         document.addEventListener('DOMContentLoaded', (event) => {
+        document.addEventListener('DOMContentLoaded', () => {
             const title = document.querySelector('h1');
             const text = title.textContent;
             title.innerHTML = '';
-            let i = 0;
-            function typeWriter() {
-                if (i < text.length) {
-                    title.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, 50);
-                } else {
-                    title.innerHTML += '<span class="cursor"></span>';
-                }
-            }
-            typeWriter();
 
-            async function displayPost() {
+            const typeWriter = (text, element, i = 0) => {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    setTimeout(() => typeWriter(text, element, i + 1), 50);
+                } else {
+                    element.innerHTML += '<span class="cursor"></span>';
+                }
+            };
+
+            typeWriter(text, title);
+
+            const displayPost = async () => {
                 const postId = new URLSearchParams(window.location.search).get('id');
                 const post = blogPostsMetadata.find(p => p.id === postId);
                 
@@ -270,15 +254,21 @@
                 document.title = `Aarav's Blog - ${post.title}`;
                 document.getElementById('post-meta').textContent = `Posted on: ${post.date} | Author: ${post.author}`;
 
-                const response = await fetch(post.file);
-                const markdown = await response.text();
-                const converter = new showdown.Converter();
-                const html = converter.makeHtml(markdown);
-
-                document.getElementById('post-content').innerHTML = html;
-            }
+                try {
+                    const response = await fetch(post.file);
+                    const markdown = await response.text();
+                    const converter = new showdown.Converter();
+                    const html = converter.makeHtml(markdown);
+                    document.getElementById('post-content').innerHTML = html;
+                } catch (error) {
+                    console.error('Error fetching or parsing post:', error);
+                    document.getElementById('post-content').innerHTML = '<p>Error loading post content.</p>';
+                }
+            };
 
             displayPost();
+
+            document.getElementById('current-year').textContent = new Date().getFullYear();
         });
     </script>
 </body>
