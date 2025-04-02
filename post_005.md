@@ -22,7 +22,7 @@ Those ₹8,000 phones running "pure Android"? They rely on AOSP. With Google pri
 *Bottom line:* The gap between a ₹8,000 phone and a ₹80,000 Pixel will feel even wider.
 
 ### 2. Custom ROMs Are in Trouble
-Ever used LineageOS or Pixel Experience ROM? Here's what changes:
+Using LineageOS, Crdroid, nightly or weekly beta builds eh? Here's what changes:
 - 📅 Updates will arrive late
 - 🔧 Developers must reverse-engineer features
 - 🐛 More bugs to struggle with
@@ -32,15 +32,18 @@ Ever used LineageOS or Pixel Experience ROM? Here's what changes:
 ### 3. Goodbye, Leaks!
 Remember when we knew everything about new Android versions months in advance? Those days are over. Now we'll be as clueless as iPhone users waiting for Apple's keynote.
 
-## 🎭 The Real Reason Google Did This
+## 🎯 The Real Reasons Behind Google's Move
 
-They claim it's for "efficiency." But let's be real:
+**They claim it's for "efficiency." Here's what's really happening:**
 
-| Reason | What It Means |
-|--------|--------------|
-| **Control** | Fewer forks, fewer headaches (like Huawei's HarmonyOS) |
-| **Pixel Privilege** | Want latest Android ASAP? Buy a Pixel |
-| **AI Focus** | Google would rather spend energy on Gemini than manage public code |
+- **🛡️ More Control**  
+  Fewer Android forks means fewer headaches for Google (looking at you, Huawei's HarmonyOS)
+
+- **📱 Pixel Privilege**  
+  Want Android updates first? Google's message is clear: *Buy a Pixel*
+
+- **🧠 AI Focus Shift**  
+  Google would rather pour resources into Gemini than babysit public code contributions
 
 ## 🔮 What's Next?
 
@@ -51,10 +54,3 @@ They claim it's for "efficiency." But let's be real:
 ## 💭 Final Thought
 
 Android's openness made it the world's dominant OS. But now, Google's choosing the Apple path: less freedom, more control. Sure, your phone will still work fine. But that dream of a truly open, customizable Android? It's fading faster than my New Year's gym resolution.
-
-**What do you think?**  
-- [ ] Smart move by Google?  
-- [ ] Should India build its own OS?  
-- [ ] Will you miss the good old days of Android leaks?
-
-Drop your thoughts below. Unless Google locks comments next. *(Kidding. Maybe.)*
