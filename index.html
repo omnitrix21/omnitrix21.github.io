@@ -4,66 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aarav's Blog</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="blog-data.js"></script>
-    
-    <style>
-        a {
-            color: #CA7DF9;
-            text-decoration: none;
-            transition: color 0.3s, transform 0.3s;
-            display: inline-block;
-        }
-
-        a:hover {
-            color: #E7ECEF;
-            transform: scale(1.1);
-            text-decoration: underline;
-        }
-
-        a::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background: #E7ECEF;
-            left: 0;
-            bottom: 0;
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        a:hover::after {
-            transform: scaleX(1);
-        }
-    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
 </head>
 <body>
-    <div class="terminal">
-        <header>
-            <h1>Welcome to Aarav's space<span class="cursor"></span></h1>
-            <nav>
+    <div class="container">
+        <header class="header">
+            <h1>Welcome to Aarav's Space<span class="cursor"></span></h1>
+            <nav class="nav">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
-                <a href="#contact">Contact</a>
                 <a href="archive.html">Archive</a>
                 <a href="games.html">Fun Zone</a>
             </nav>
         </header>
 
         <main id="blog-posts">
-        </main>
+            </main>
 
-        <footer>
-            <p>&copy; 2024 Aarav's Space | All rights reserved | <span class="cursor"></span></p>
+        <footer class="text-center">
+            <p>&copy; 2024 Aarav's Space</p>
         </footer>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
+    <script src="blog-data.js"></script>
+    <script src="scripts.js"></script>
     <script>
-          async function fetchMarkdown(file) {
+        async function fetchMarkdown(file) {
             const response = await fetch(file);
             return response.text();
         }
@@ -77,14 +44,14 @@
             
             for (const post of latestPosts) {
                 const markdown = await fetchMarkdown(post.file);
-                const excerpt = markdown.split('\n').slice(0, 3).join('\n'); // First 3 lines as excerpt
+                const excerpt = markdown.split('\n').slice(0, 3).join('\n');
                 const html = converter.makeHtml(excerpt);
                 
                 const postHTML = `
-                    <article class="post" data-post-id="${post.id}">
+                    <article class="card post" data-post-id="${post.id}">
                         <h2>${post.title}</h2>
                         <div class="post-meta">Posted on: ${post.date} | Author: ${post.author}</div>
-                        ${html}
+                        <div class="post-content">${html}</div>
                         <a class="read-more" href="post-template.html?id=${post.id}">Read more...</a>
                     </article>
                 `;
@@ -94,22 +61,7 @@
 
         document.addEventListener('DOMContentLoaded', (event) => {
             displayLatestPosts(2);
-            
-            // Typing effect for the main title
-            const title = document.querySelector('h1');
-            const text = title.textContent;
-            title.innerHTML = '';
-            let i = 0;
-            function typeWriter() {
-                if (i < text.length) {
-                    title.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, 50);
-                } else {
-                    title.innerHTML += '<span class="cursor"></span>';
-                }
-            }
-            typeWriter();
+            typeWriter('h1', 'Welcome to Aarav\'s Space');
         });
     </script>
 </body>

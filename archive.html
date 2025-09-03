@@ -3,243 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aarav's Blog - Archive</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-:root {
-    --bg-color: #071013;
-    --text-color: #F3F7F0;
-    --highlight-color: #E7ECEF;
-    --dim-color: #BEFFC7;
-    --link-color: #CA7DF9; 
-    --padding-small: 1rem;
-    --padding-medium: 1.5rem;
-    --padding-large: 2rem;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body, html {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: 'Fira Code', monospace;
-    line-height: 1.6;
-    height: 100%;
-    font-size: 16px;
-}
-
-.terminal {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: var(--padding-small);
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.terminal::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 25px;
-    background: var(--dim-color);
-    border-bottom: 2px solid var(--text-color);
-    z-index: 1000;
-}
-
-header {
-    margin-top: calc(25px + var(--padding-medium));
-    margin-bottom: var(--padding-medium);
-    border: 1px solid var(--text-color);
-    padding: var(--padding-medium);
-    position: relative;
-}
-
-header::before {
-    content: "$ cat header.txt";
-    position: absolute;
-    top: -0.8em;
-    left: 1em;
-    background: var(--bg-color);
-    padding: 0 0.5em;
-    color: var(--highlight-color);
-}
-
-h1, h2 {
-    color: var(--text-color);
-    text-align: center;
-    word-wrap: break-word;
-}
-
-h1 { font-size: 2em; margin-bottom: var(--padding-medium); }
-h2 { font-size: 1.5em; margin-bottom: var(--padding-medium); }
-
-nav {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: var(--padding-medium);
-}
-
-nav a {
-    margin: 0.5em;
-    color: var(--link-color);
-    text-decoration: none;
-    position: relative;
-    transition: color 0.3s, transform 0.3s;
-}
-
-nav a::before {
-    content: "> ";
-    color: var(--text-color);
-}
-
-nav a:hover {
-    color: var(--text-color);
-    text-decoration: underline;
-    transform: scale(1.1);
-}
-
-.archive {
-    flex-grow: 1;
-    border: 1px solid var(--dim-color);
-    padding: var(--padding-medium);
-    position: relative;
-    margin: 0 20px;
-}
-
-.archive::before {
-    content: "$ ls -l archive/";
-    position: absolute;
-    top: -0.8em;
-    left: 1em;
-    background: var(--bg-color);
-    padding: 0 0.5em;
-    color: var(--highlight-color);
-}
-
-.archive-list {
-    list-style-type: none;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.archive-list li {
-    margin-bottom: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: baseline;
-}
-
-.archive-list .date {
-    color: var(--dim-color);
-    font-size: 0.9em;
-    min-width: 100px;
-    text-align: right;
-    flex-shrink: 0;
-}
-
-.archive-list a {
-    color: var(--link-color);
-    text-decoration: none;
-    transition: color 0.3s, transform 0.3s;
-    flex-grow: 1;
-    margin-right: 15px;
-}
-
-.archive-list a:hover {
-    color: var(--text-color);
-    text-decoration: underline;
-    transform: scale(1.05);
-}
-
-.archive-list a::before {
-    content: "> ";
-    color: var(--text-color);
-}
-
-footer {
-    margin-top: auto;
-    text-align: center;
-    color: var(--dim-color);
-    border-top: 1px solid var(--dim-color);
-    padding: var(--padding-medium) 0;
-}
-
-::selection {
-    background: var(--highlight-color);
-    color: var(--bg-color);
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
-
-.cursor::after {
-    content: "█";
-    animation: blink 1s infinite;
-    color: var(--text-color);
-}
-
-@media screen and (max-width: 768px) {
-    :root {
-        --padding-small: 0.8rem;
-        --padding-medium: 1.2rem;
-        --padding-large: 1.5rem;
-    }
-
-    body { font-size: 14px; }
-    h1 { font-size: 1.5em; }
-    h2 { font-size: 1.3em; }
-    .terminal { padding: var(--padding-small); }
-    header, .archive { padding: var(--padding-small); }
-}
-
-@media screen and (min-width: 1200px) {
-    .terminal { padding: var(--padding-large); }
-}
-</style>
+    <title>Archive - Aarav's Blog</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
 </head>
 <body>
-    <div class="terminal">
-        <header data-before="$ cat header.txt">
-            <h1>Aarav's Blog</h1>
-            <nav>
+    <div class="container">
+        <header class="header">
+            <h1>Blog Archive<span class="cursor"></span></h1>
+            <nav class="nav">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="archive.html">Archive</a>
-                <a href="#contact">Contact</a>
+                <a href="games.html">Fun Zone</a>
             </nav>
         </header>
+
         <main>
-            <section class="archive" data-before="$ ls -l archive/">
-                <h2>Archive</h2>
+            <div class="card">
+                <h2>All Posts</h2>
                 <ul id="archive-list" class="archive-list">
-                    <!-- Posts will be dynamically added here -->
-                </ul>
-            </section>
+                    </ul>
+            </div>
         </main>
-        <footer>
-            <p>&copy; 2024 Aarav's Space. All rights reserved.</p>
+
+        <footer class="text-center">
+            <p>&copy; 2024 Aarav's Space</p>
         </footer>
     </div>
 
     <script src="blog-data.js"></script>
+    <script src="scripts.js"></script>
     <script>
-        // Function to display all posts
         function displayAllPosts() {
             const archiveList = document.getElementById('archive-list');
-            
-            // Sort posts by date (newest first)
             const sortedPosts = blogPostsMetadata.sort((a, b) => new Date(b.date) - new Date(a.date));
             
             sortedPosts.forEach(post => {
@@ -252,8 +49,10 @@ footer {
             });
         }
 
-        // Call the function when the DOM is fully loaded
-        document.addEventListener('DOMContentLoaded', displayAllPosts);
+        document.addEventListener('DOMContentLoaded', () => {
+            displayAllPosts();
+            typeWriter('h1', 'Blog Archive');
+        });
     </script>
 </body>
 </html>
