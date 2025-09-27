@@ -1,0 +1,3 @@
+[submodule "themes/akhbaar"]
+	path = themes/akhbaar
+	url = https://github.com/mngshm/akhbaar
